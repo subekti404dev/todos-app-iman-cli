@@ -14,7 +14,7 @@
     "dotenv": "^8.2.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "pouchy-store": "file:./local_modules/pouchy-store-patch",
+    "pouchy-store": "github:subekti404dev/pouchy-store-commonjs",
     "yargs": "^16.2.0"
   },
   "devDependencies": {}

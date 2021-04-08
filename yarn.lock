@@ -462,8 +462,9 @@ pouchdb@^7.0.0:
     uuid "8.1.0"
     vuvuzela "1.0.3"
 
-"pouchy-store@file:./local_modules/pouchy-store-patch":
+"pouchy-store@github:subekti404dev/pouchy-store-commonjs":
   version "0.1.7"
+  resolved "https://codeload.github.com/subekti404dev/pouchy-store-commonjs/tar.gz/95159541b4e94385727ee1e1f1707edb9846457c"
   dependencies:
     axios "^0.21.1"
     buffer "^6.0.3"
