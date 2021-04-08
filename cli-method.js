@@ -16,6 +16,12 @@ const input = async (question) => {
 }
 
 
+const addSpaces = (length) => {
+  return _.range(length).map(() => ' ').join('');
+}
+
+
+
 const getUndoneTodos = async () => {
   let data = await TodoApp.getUndoneTodos();
   if (!data) data = [];
@@ -36,10 +42,6 @@ const getUndoneTodos = async () => {
 
   }
   return data;
-}
-
-const addSpaces = (length) => {
-  return _.range(length).map(() => ' ').join('');
 }
 
 
@@ -134,10 +136,50 @@ const list = async () => {
   process.exit()
 }
 
+
+const help = async () => {
+  const helpData = [
+    {
+      command: '--list',
+      description: 'Show undone tasks or todo'
+    },
+    {
+      command: '--add',
+      description: 'Create new task or todo'
+    },
+    {
+      command: '--done',
+      description: 'Mark task or todo as done'
+    },
+    {
+      command: '--delete',
+      description: 'Delete task or todo from database'
+    },
+    {
+      command: '--sync',
+      description: 'Upload and download tasks from remote database'
+    }
+
+  ];
+
+  const maxCommandLength = _.maxBy(helpData, (x) => x.command.length).command.length + 4;
+
+  console.log("");
+  for (const d of helpData) {
+    const cmdLength = d.command.length;
+    console.log("   " + chalk.yellow(d.command) + addSpaces(maxCommandLength - cmdLength) + chalk.grey(d.description));
+  }
+  console.log("");
+
+  process.exit()
+}
+
+
 module.exports = {
   add,
   sync,
   doDelete,
   doDone,
-  list
+  list,
+  help,
 }
