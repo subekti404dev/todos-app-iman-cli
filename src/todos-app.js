@@ -7,8 +7,14 @@ class TodoAppClass {
     this.initialized = true;
   }
 
+  async sync() {
+    if (!this.initialized) await this.init();
+    await AppStore.todos.uploadIfOnline();
+    return true;
+  }
+
   async getAllTodos() {
-    if (!this.isUseRemote) await this.init();
+    if (!this.initialized) await this.init();
     return await AppStore.todos.data;
   }
 
@@ -32,7 +38,7 @@ class TodoAppClass {
 
   async done(id) {
     try {
-      if (!this.isUseRemote) await this.init();
+      if (!this.initialized) await this.init();
       await AppStore.todos.editItem(id, {
         done: true,
         updatedAt: new Date(),
@@ -46,11 +52,12 @@ class TodoAppClass {
 
   async undone(id) {
     try {
-      if (!this.isUseRemote) await this.init();
+      if (!this.initialized) await this.init();
       await AppStore.todos.editItem(id, {
         done: false,
         updatedAt: new Date(),
       })
+      await AppStore.todos.uploadIfOnline();
       return true;
     } catch (error) {
       throw new Error(`Error: ${error.message}`);
@@ -60,8 +67,25 @@ class TodoAppClass {
 
   async delete(id) {
     try {
-      if (!this.isUseRemote) await this.init();
+      if (!this.initialized) await this.init();
       await AppStore.todos.deleteItem(id);
+      await AppStore.todos.uploadIfOnline();
+      return true;
+    } catch (error) {
+      throw new Error(`Error: ${error.message}`);
+    }
+  }
+
+  async add(text, tags = []) {
+    try {
+      if (!this.initialized) await this.init();
+      await AppStore.todos.addItem({
+        text,
+        tags,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      await AppStore.todos.uploadIfOnline();
       return true;
     } catch (error) {
       throw new Error(`Error: ${error.message}`);
