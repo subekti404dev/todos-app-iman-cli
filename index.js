@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 require('dotenv').config();
 const CLI = require('./cli-method')
 const argv = require('yargs/yargs')(process.argv.slice(2)).argv;
