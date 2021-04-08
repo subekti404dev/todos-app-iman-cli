@@ -10,8 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
-    "pouchy-store": "file:./local_modules/pouchy-store-patch"
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "pouchy-store": "file:./local_modules/pouchy-store-patch",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {}
 }
