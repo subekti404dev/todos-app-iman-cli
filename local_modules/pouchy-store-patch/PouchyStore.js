@@ -1,6 +1,6 @@
-import PouchDB from './libs/PouchDB';
-import generateReplicationId from './libs/generateReplicationId';
-import checkInternet from './libs/checkInternet';
+const PouchDB = require( './libs/PouchDB');
+const generateReplicationId = require('./libs/generateReplicationId');
+const checkInternet = require('./libs/checkInternet');
 
 console.e = console.log;
 
@@ -20,7 +20,7 @@ class options: create getter fo these:
 
 */
 
-export default class PouchyStore {
+class PouchyStore {
   constructor() {
     // set default options
     if (!('isUseData' in this)) {
@@ -77,6 +77,7 @@ export default class PouchyStore {
       auto_compaction: true,
       revs_limit: 2,
     });
+
     if (this.isUseRemote) {
       if (!this.urlRemote) {
         throw new Error(`store's urlRemote should not be ${this.urlRemote}`);
@@ -96,6 +97,7 @@ export default class PouchyStore {
     }
     this.watchMeta();
 
+    
     if (this.isUseRemote) {
       // sync data local-remote
       try {
@@ -105,11 +107,10 @@ export default class PouchyStore {
           batches_limit: 2,
         });
       } catch (err) {
-        console.e(err);
+        // console.log({err});
       }
       await this.initUnuploadeds();
     }
-
     // init data from PouchDB to memory
     const docs = await this.dbLocal.getDocs();
     if (this.single) {
@@ -206,7 +207,7 @@ export default class PouchyStore {
         this.persistMeta();
       }
     } catch (err) {
-      console.e(err);
+      // console.e(err);
     }
   }
 
@@ -467,3 +468,5 @@ export default class PouchyStore {
     return;
   }
 }
+
+module.exports = PouchyStore;

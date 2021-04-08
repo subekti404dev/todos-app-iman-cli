@@ -11,6 +11,8 @@
     "url": "git+https://github.com/eFishery/pouchy-store.git"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "buffer": "^6.0.3",
     "pouchdb": "^7.0.0",
     "pouchdb-adapter-websql-core": "^7.0.0",
     "react-native-sqlite-storage": "^3.3.9"

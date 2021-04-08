@@ -1,5 +1,5 @@
-import AppStore from './src/store/index';
 require('dotenv').config();
+const AppStore = require('./src/store/index');
 
 class TodoAppCLI {
   async init() {
@@ -7,16 +7,15 @@ class TodoAppCLI {
   }
 
   async getTodoList() {
-    return AppStore.todos
+    return AppStore.todos.data;
   }
 }
 
 const todoApp = new TodoAppCLI();
 const test = async () => {
-
   await todoApp.init();
   const res = await todoApp.getTodoList()
-  console.log(res);
+  return res
 }
 
-test()
+test().then(console.log)

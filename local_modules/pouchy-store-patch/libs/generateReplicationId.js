@@ -1,4 +1,5 @@
-import Md5 from 'spark-md5';
+const Md5 = require('spark-md5');
+btoa = function(str){ return Buffer.from(str).toString('base64'); }
 
 function collate(a, b) {
 
@@ -46,7 +47,7 @@ function normalizeKey(key) {
         for (var i = 0; i < len; i++) {
           key[i] = normalizeKey(origKey[i]);
         }
-      /* istanbul ignore next */
+        /* istanbul ignore next */
       } else if (key instanceof Date) {
         return key.toJSON();
       } else if (key !== null) { // generic object
@@ -139,7 +140,7 @@ function generateReplicationId(src, target, opts) {
   var docIds = opts.doc_ids ? opts.doc_ids.sort(collate) : '';
   var filterFun = opts.filter ? opts.filter.toString() : '';
   var queryParams = '';
-  var filterViewName =  '';
+  var filterViewName = '';
   var selector = '';
 
   // possibility for checkpoints to be lost here as behaviour of
@@ -254,4 +255,4 @@ function binaryMd5(data, callback) {
   loadNextChunk();
 }
 
-export default generateReplicationId;
+module.exports = generateReplicationId;

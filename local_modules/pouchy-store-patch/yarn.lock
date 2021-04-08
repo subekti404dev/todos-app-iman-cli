@@ -92,11 +92,6 @@ deferred-leveldown@~5.3.0:
     abstract-leveldown "~6.2.1"
     inherits "^2.0.3"
 
-dotenv@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
-  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
-
 double-ended-queue@2.1.0-0:
   version "2.1.0-0"
   resolved "https://registry.yarnpkg.com/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
@@ -385,15 +380,6 @@ pouchdb@^7.0.0:
     through2 "3.0.2"
     uuid "8.1.0"
     vuvuzela "1.0.3"
-
-"pouchy-store@file:./local_modules/pouchy-store-patch":
-  version "0.1.7"
-  dependencies:
-    axios "^0.21.1"
-    buffer "^6.0.3"
-    pouchdb "^7.0.0"
-    pouchdb-adapter-websql-core "^7.0.0"
-    react-native-sqlite-storage "^3.3.9"
 
 prr@~1.0.1:
   version "1.0.1"

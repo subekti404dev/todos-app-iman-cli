@@ -1,5 +1,5 @@
-import WebSqlPouchCore from 'pouchdb-adapter-websql-core';
-import sqlitePlugin from 'react-native-sqlite-storage';
+const WebSqlPouchCore = require('pouchdb-adapter-websql-core');
+const sqlitePlugin = require('react-native-sqlite-storage');
 
 function createOpenDBFunction (opts) {
   return function (name, version, description, size) {
@@ -43,4 +43,4 @@ function reactNativeSqlitePlugin (PouchDB) {
   PouchDB.adapter('react-native-sqlite', ReactNativeSQLitePouch, true)
 }
 
-export default reactNativeSqlitePlugin
+module.exports = reactNativeSqlitePlugin

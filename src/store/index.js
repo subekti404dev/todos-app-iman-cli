@@ -1,4 +1,4 @@
-import todoStore from "./todos"
+const todoStore = require ("./todos")
 
 class AppStore {
  
@@ -12,4 +12,5 @@ class AppStore {
   }
 }
 
-export default new AppStore();
+const appStore = new AppStore();
+module.exports = appStore;

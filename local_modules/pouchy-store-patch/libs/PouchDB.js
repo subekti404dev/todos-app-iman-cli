@@ -1,6 +1,6 @@
-import IPouchDB from 'pouchdb';
+const IPouchDB = require('pouchdb');
 
-export default class PouchDB extends IPouchDB {
+class PouchDB extends IPouchDB {
   async getFailSafe(id) {
     try {
       const doc = await this.get(id);
@@ -42,3 +42,5 @@ export default class PouchDB extends IPouchDB {
     return docs;
   }
 }
+
+module.exports = PouchDB;

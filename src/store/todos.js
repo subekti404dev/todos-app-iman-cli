@@ -1,4 +1,4 @@
-import PouchyStore from 'pouchy-store';
+const PouchyStore = require( 'pouchy-store');
 
 class TodoStore extends PouchyStore {
   get name() {
@@ -19,4 +19,5 @@ class TodoStore extends PouchyStore {
   }
 }
 
-export default new TodoStore();
+const todoStore = new TodoStore();
+module.exports = todoStore;
