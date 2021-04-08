@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const AppStore = require('./store/index');
 
 class TodoAppClass {
@@ -15,7 +16,8 @@ class TodoAppClass {
 
   async getAllTodos() {
     if (!this.initialized) await this.init();
-    return await AppStore.todos.data;
+    const data = _.get(AppStore, 'todos.data', []);
+    return _.sortBy(data, 'createdAt').reverse();
   }
 
   async getUndoneTodos() {
